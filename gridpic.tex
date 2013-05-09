@@ -1,0 +1,51 @@
+% big examples from
+% http://timmurphy.org/2010/08/20/drawing-pictures-in-latex/
+
+\def\gridspace{20}
+\def\doublegridspace{40}
+\def\griddiagonal{10}
+\def\griddot{\circle*{2}}
+
+\documentclass{article}
+\begin{document}
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(80,70)
+    \linethickness{1.5pt}
+
+    % dots
+    \multiput(20, 10)(5, 5){3}{
+        \multiput(0, 0)(0, \gridspace){3} {
+            \multiput(0, 0)(\gridspace, 0){3}{\griddot}
+        }
+    }
+
+    % stright lines
+    \multiput(20, 10)(5, 5){3} {
+        \multiput(0, 0)(0, \gridspace){3}{\line(1, 0){\doublegridspace}}
+        \multiput(0, 0)(\gridspace, 0){3}{\line(0, 1){\doublegridspace}}
+    }
+
+    % diagonal lines
+    \multiput(20, 10)(0, \gridspace){3} {
+        \multiput(0, 0)(\gridspace, 0){3}{\line(1, 1){\griddiagonal}}
+    }
+
+    \linethickness{1pt}
+
+    % arrows
+    \put(20, 10){\vector(-1, -1){5}}
+    \put(30, 60){\vector(0, 1){10}}
+    \put(70, 20){\vector(1, 0){10}}
+
+    % labels
+    \put(18, 12){\makebox(0,0){$2$}}
+    \put(28, 62){\makebox(0,0){$2$}}
+    \put(72, 22){\makebox(0,0){$2$}}
+    \put(17, 4){\makebox(0,0){$x$}}
+    \put(80, 18){\makebox(0,0){$y$}}
+    \put(28, 70){\makebox(0,0){$z$}}
+
+\end{picture}
+
+\end{document}
